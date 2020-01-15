@@ -1,5 +1,9 @@
 import React from 'react';
 
+const clicking = () => {
+    alert("꺼져");
+}
+
 const Search = (props) => (
     <div class="search">
         <form id="sform" name="sform" action="" method="get">
@@ -9,8 +13,8 @@ const Search = (props) => (
                     <div class="autocomplete">
 
                     </div>
-                    <button class="sch_smit" id="search_btn" type="submit" title="검색">
-                        <span class="ico_search_submit"></span>
+                    <button class="sch_smit" id="search_btn" type="submit" title="검색" onClick={clicking}>
+                        <span class="ico_search_submit" style={{backgroundColor:"orange"}}>검색</span>
                     </button>
                 </span>
             </fieldset>

@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from './styles.module.scss';
 
 const Footer = (props) => (
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div>
+    <footer className={styles.footer}>
+        <div className={styles.container}>
+            <div className={styles.row}>
+                <div className={styles.col}>
+                    <div className={styles.smallContainer}>
                         <small>
                         (주) 캠퍼스 딜 | 대표 김명성 | 사업자등록번호 111-82-12345 | 통신판매신고 제2019-서울마포-0000호
                         </small>

@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './styles.module.scss';
 
 const Icon = (props) => (
-    <div>
-        <a href={props.url}>
-            <div>{props.title}</div>
-            <img src={props.image} alt="#"></img>
+    <div className={styles.icon}>
+        <a className={styles.link} href={props.url}>
+            <img className={styles.image}src={props.image} alt="#"></img>
+            <div className={styles.title}>{props.title}</div>
         </a>
     </div>
 );
@@ -34,7 +35,7 @@ class Group extends React.Component{
     render(){
         const {groups} = this.state;
         return(
-            <div className="group">
+            <div className={styles.group}>
                 {groups.map((group)=>
                     <Icon key={group.id} title={group.title} image={group.image}/>)}
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from "./styles.module.scss";
 
 const LoginButton = (props) => (
@@ -43,7 +44,9 @@ class Navigation extends React.Component {
                     <div className={styles.row}>
                         <div className={styles.colLeft}>
                             <div className={styles.link}>
-                                <img src ={require("../../images/logo.png")} className={styles.logo} alt="Logo"/>
+                                <Link to='/'>
+                                    <img src ={require("../../images/logo.png")} className={styles.logo} alt="Logo"/>
+                                </Link>
                             </div>
                         </div>
                         <div className={styles.colRight}>
@@ -51,7 +54,7 @@ class Navigation extends React.Component {
                                 <ul className={styles.menu}>
                                     {button}
                                     {isLoggedIn ? 
-                                        <li className={styles.link}>마이페이지</li>
+                                        <li className={styles.link}><Link to='/about/foo'>마이페이지</Link></li>
                                         :<li className={styles.link}>회원가입</li>
                                     }
                                     <li className={styles.link}>장바구니</li>

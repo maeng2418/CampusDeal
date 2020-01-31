@@ -1,0 +1,38 @@
+.home{
+    margin: 3vw auto 0 auto;
+}
+
+.form-container{
+    margin: 3vw auto 0 auto;
+    form{
+        width: 40vw;
+        .form-group{
+            margin-bottom: 2rem;
+        }
+        .row-form-group{
+            display: flex;
+            margin-bottom: 2rem;
+            .state{
+                margin-right: 0.5rem;
+            }
+            .phone{
+                width: 20vw;
+            }
+            Button{
+                margin-left: auto;
+            }
+        }
+        .checkGroup{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+            .check{
+                display: flex;
+                margin-bottom: 0.5rem;
+                .link {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}

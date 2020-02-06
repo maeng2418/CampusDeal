@@ -1,9 +1,21 @@
 .search-bar {
     width: 50vw;
     margin: 0 auto;
-    .input-bar {
+    .input-group{
         border-style: solid;
-        border-width: 1px;
+        border-width: 2px;
         border-color: #28a745;
+        border-radius: .25rem;
+        button, button:hover, button:active, button:focus-within, button:visited {
+            border-width: 0;
+            border-radius: 0;
+        }
+        .input-bar {
+            border-style: solid;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: #28a745;
+        }
     }
+    
 }

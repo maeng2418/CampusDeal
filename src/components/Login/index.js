@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import styles from './styles.module.scss';
 
+// sign-in.component.jsx 파일
+import { signInWithGoogle } from 'firebase.utils';
+
 function Login() {
     const [show, setShow] = useState(false);
 
@@ -39,6 +42,9 @@ function Login() {
                         </Button>
                         <Button variant="primary" size="lg" block onClick={handleClose}>
                             페이스북 로그인
+                        </Button>
+                        <Button variant="outline-danger" size="lg" block onClick={signInWithGoogle}>
+                            구글 로그인
                         </Button>
                     </Form>
                 </Modal.Body>

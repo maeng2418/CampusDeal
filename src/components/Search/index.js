@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputGroup, FormControl, DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import styles from './styles.module.scss';
 
 const clicking = () => {
@@ -6,31 +7,37 @@ const clicking = () => {
 }
 
 class Search extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {value:''}
+        this.state = { value: '' }
     }
 
-    handleChange = (event)=>{
-        this.setState({value: event.target.value})
+    handleChange = (event) => {
+        this.setState({ value: event.target.value })
     }
 
     render() {
-        return(
-            <div className={styles.search}>
-                <form className={styles.form} id="sform" name="sform" action="" method="get">
-                    <fieldset>
-                        <span className={styles.green_window}>
-                            <input className={styles.input_text} name="query" type="text" title="검색어 입력" maxLength="255" placeholder="통합검색" value={this.state.value} onChange={this.handleChange}/>
-                            <div className={styles.autoComplete}>
+        return (
+            <div className={styles.searchBar}>
+                <InputGroup className="mb-3">
+                    <DropdownButton
+                        as={InputGroup.Prepend}
+                        variant="outline-success"
+                        title="통합검색"
+                        id="input-group-dropdown-1"
+                    >
+                        <Dropdown.Item href="#">Action</Dropdown.Item>
+                        <Dropdown.Item href="#">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                    </DropdownButton>
+                    <FormControl name="query" aria-describedby="basic-addon1" className={styles.inputBar} value={this.state.value} onChange={this.handleChange}/>
+                    <InputGroup.Append>
+                        <Button variant="outline-success" onClick={clicking}>🔍</Button>
+                    </InputGroup.Append>
+                </InputGroup>
 
-                            </div>
-                            <button className={styles.sch_smit} id="search_btn" type="submit" title="검색" onClick={clicking}>
-                                <img alt="#" src={require("../../images/btn_search.gif")} className={styles.ico_search_submit}></img>
-                            </button>
-                        </span>
-                    </fieldset>
-                </form>
             </div>
         )
     }

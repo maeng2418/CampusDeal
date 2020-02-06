@@ -5,9 +5,9 @@ import Login from "components/Login";
 import Home from "components/Home";
 
 class Navigation extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
 

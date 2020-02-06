@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import styles from './styles.module.scss';
 
 // sign-in.component.jsx 파일
-import { signInWithGoogle } from 'firebase.utils';
+import { signInWithGoogle, signInWithFacebook } from 'firebase.utils';
 
 function Login() {
     const [show, setShow] = useState(false);
@@ -40,7 +40,7 @@ function Login() {
                         <Button className={styles.loginWrapper} variant="outline-success" size="lg" block onClick={handleClose}>
                             로그인
                         </Button>
-                        <Button className={styles.loginWrapper} variant="outline-primary" size="lg" block onClick={handleClose}>
+                        <Button className={styles.loginWrapper} variant="outline-primary" size="lg" block onClick={signInWithFacebook}>
                             <img className={styles.facebookBtn} src={require("../../images/facebookSignUp.png")}/>페이스북 로그인
                         </Button>
                         <Button className={styles.loginWrapper} variant="outline-danger" size="lg" block onClick={signInWithGoogle}>

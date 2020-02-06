@@ -37,14 +37,14 @@ function Login() {
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="로그인상태 유지" />
                         </Form.Group>
-                        <Button variant="danger" size="lg" block onClick={handleClose}>
+                        <Button className={styles.loginWrapper} variant="outline-success" size="lg" block onClick={handleClose}>
                             로그인
                         </Button>
-                        <Button variant="primary" size="lg" block onClick={handleClose}>
-                            페이스북 로그인
+                        <Button className={styles.loginWrapper} variant="outline-primary" size="lg" block onClick={handleClose}>
+                            <img className={styles.facebookBtn} src={require("../../images/facebookSignUp.png")}/>페이스북 로그인
                         </Button>
-                        <Button variant="outline-danger" size="lg" block onClick={signInWithGoogle}>
-                            구글 로그인
+                        <Button className={styles.loginWrapper} variant="outline-danger" size="lg" block onClick={signInWithGoogle}>
+                            <img className={styles.googleBtn} src={require("../../images/googleSignUp.png")}/>구글 로그인
                         </Button>
                     </Form>
                 </Modal.Body>

@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Home from 'components/Home';
+import campusList from './campusList';
 
 class SignUp extends React.Component {
     render() {
@@ -43,8 +44,7 @@ class SignUp extends React.Component {
 
                         <div className={styles.formGroup}>
                             <Form.Control as="select">
-                                <option>서울대학교</option>
-                                <option>서울과학기술대학교</option>
+                                {campusList.map((campus)=><option>{campus}</option>)}
                             </Form.Control >
                         </div>
 

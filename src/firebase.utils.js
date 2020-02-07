@@ -19,7 +19,6 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider).then(
     // The signed-in user info.
     var user = result.user;
     // ...
-    window.localStorage.setItem('user', JSON.stringify(user));
 }).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -30,13 +29,6 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider).then(
     var credential = error.credential;
     // ...
 });
-
-export const signOutWithGoogle = () => auth.signOut().then(function() {
-    // Sign-out successful.
-    window.localStorage.clear();
-  }).catch(function(error) {
-    // An error happened.
-  });
 
 export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider).then(function (result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -44,7 +36,6 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider).t
     // The signed-in user info.
     var user = result.user;
     // ...
-    window.localStorage.setItem('user', JSON.stringify(user));
 }).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -56,9 +47,8 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider).t
     // ...
 });
 
-export const signOutWithFacebook = () => auth.signOut().then(function() {
+export const signOut = () => auth.signOut().then(function() {
     // Sign-out successful.
-    window.localStorage.clear();
   }).catch(function(error) {
     // An error happened.
   });

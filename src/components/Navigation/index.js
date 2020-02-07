@@ -3,16 +3,24 @@ import { Link } from 'react-router-dom';
 import styles from "./styles.module.scss";
 import Login from "components/Login";
 import Home from "components/Home";
-import { signOutWithGoogle } from 'firebase.utils';
+import { auth, signOut } from 'firebase.utils';
 
 class Navigation extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: auth.currentUser,
+        }
+    }
+
+    componentDidMount() {
+        auth.onAuthStateChanged(user => {
+            this.setState({user})
+        });
+    }
 
     render() {
-        const { currentUser } = this.props;
-
+        const {user} = this.state;
         return (
             <div className={styles.navigation}>
                 <div className={styles.navWrapper}>
@@ -24,9 +32,9 @@ class Navigation extends React.Component {
                             <div className={styles.menuBar}>
                                 <ul className={styles.menu}>
                                     {
-                                        currentUser ?
+                                        user ?
                                         <Fragment>
-                                            <li className={styles.link} onClick={signOutWithGoogle}>로그아웃</li>
+                                            <li className={styles.link} onClick={signOut}>로그아웃</li>
                                             <li className={styles.link}>마이페이지</li>
                                         </Fragment>
                                         :

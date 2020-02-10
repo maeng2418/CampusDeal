@@ -5,6 +5,10 @@ import Login from "components/Login";
 import Home from "components/Home";
 import { auth, signOut } from 'firebase.utils';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from 'redux/modules/user';
+
 class Navigation extends React.Component {
     constructor(props) {
         super(props);
@@ -21,6 +25,7 @@ class Navigation extends React.Component {
 
     render() {
         const {user} = this.state;
+        console.log(this.props.isLoggedIn)
         return (
             <div className={styles.navigation}>
                 <div className={styles.navWrapper}>
@@ -45,7 +50,7 @@ class Navigation extends React.Component {
                                     }
 
                                     <li className={styles.link}>장바구니</li>
-                                    <li className={styles.link}>고객센터</li>
+                                    <li className={styles.link} onClick={this.props.logOut}>고객센터</li>
                                 </ul>
                             </div>
                         </div>
@@ -57,4 +62,13 @@ class Navigation extends React.Component {
     }
 }
 
-export default Navigation;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.user.isLoggedIn,
+        token: state.user.token,
+    }
+};
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators(actions, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation); //안쓰는거 null 처리

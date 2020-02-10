@@ -19,6 +19,7 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider).then(
     // The signed-in user info.
     var user = result.user;
     // ...
+    window.localStorage.setItem('jwt', JSON.stringify(user));
 }).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -36,6 +37,7 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider).t
     // The signed-in user info.
     var user = result.user;
     // ...
+    window.localStorage.setItem('jwt', JSON.stringify(user));
 }).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -49,6 +51,7 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider).t
 
 export const signOut = () => auth.signOut().then(function() {
     // Sign-out successful.
+    window.localStorage.removeItem("jwt");
   }).catch(function(error) {
     // An error happened.
   });

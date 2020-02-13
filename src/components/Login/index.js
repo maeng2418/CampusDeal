@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import styles from './styles.module.scss';
-
-// sign-in.component.jsx 파일
 import { signInWithGoogle, signInWithFacebook } from 'firebase.utils';
 
 function Login() {

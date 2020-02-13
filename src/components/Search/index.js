@@ -1,46 +1,14 @@
-import React from 'react';
-import { InputGroup, FormControl, DropdownButton, Dropdown, Button } from 'react-bootstrap';
-import styles from './styles.module.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from 'redux/modules/search';
+import Container from './container';
 
-const clicking = () => {
-    alert("꺼져");
-}
-
-class Search extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' }
+const mapStateToProps = (state) => {
+    return {
+        keywords: state.search.keywords,
     }
+};
 
-    handleChange = (event) => {
-        this.setState({ value: event.target.value })
-    }
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-    render() {
-        return (
-            <div className={styles.searchBar}>
-                <InputGroup className={styles.inputGroup}>
-                    <DropdownButton
-                        as={InputGroup.Prepend}
-                        variant="outline-success"
-                        title="통합검색"
-                        id="input-group-dropdown-1"
-                        className={styles.dropDownButton}
-                    >
-                        <Dropdown.Item href="#">Action</Dropdown.Item>
-                        <Dropdown.Item href="#">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                    </DropdownButton>
-                    <FormControl name="query" aria-describedby="basic-addon1" className={styles.inputBar} value={this.state.value} onChange={this.handleChange}/>
-                    <InputGroup.Append>
-                        <Button variant="outline-success" onClick={clicking}>🔍</Button>
-                    </InputGroup.Append>
-                </InputGroup>
-
-            </div>
-        )
-    }
-}
-
-export default Search;
+export default connect(mapStateToProps, mapDispatchToProps)(Container); //안쓰는거 null 처리

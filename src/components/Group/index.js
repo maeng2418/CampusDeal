@@ -1,14 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
-
-const Icon = (props) => (
-    <div className={styles.icon}>
-        <a className={styles.link} href={props.url}>
-            <img className={styles.image}src={props.image} alt="#"></img>
-            <div className={styles.title}>{props.title}</div>
-        </a>
-    </div>
-);
+import GroupIcon from 'components/GroupIcon';
 
 class Group extends React.Component{
     constructor(props){
@@ -37,7 +29,7 @@ class Group extends React.Component{
         return(
             <div className={styles.group}>
                 {groups.map((group)=>
-                    <Icon key={group.id} title={group.title} image={group.image}/>)}
+                    <GroupIcon key={group.id} title={group.title} image={group.image}/>)}
             </div>
         )
     }

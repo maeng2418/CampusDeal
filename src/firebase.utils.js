@@ -1,6 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import * as firebase from 'firebase';
 import firebaseConfig from 'firebaseConfig';
 
 firebase.initializeApp(firebaseConfig);
@@ -12,6 +10,7 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 // GoogleAuthProvider 클래스를 authentication 라이브러리에서 사용할 수 있도록 불러오는 코드.
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 facebookProvider.setCustomParameters({ prompt: 'select_account' });
+
 // signIn이랑 authentication을 위해서 GoogleAuthProvider를 사용할 때마다 구글 팝업을 항상 띄우기를 원한다는 의미이다.
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider).then(function (result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -48,6 +47,24 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider).t
     var credential = error.credential;
     // ...
 });
+
+export const createUserWithEmailAndPassword = (email, password) => auth.createUserWithEmailAndPassword(email, password).then(function(result){
+  // 메일 회원가입에 성공할때 업데이트
+  // 자동 로그인으로 간주 = onAuthStateChanged()가 동작함.
+  window.localStorage.setItem('result', result);
+}).catch(function(error) {
+  // Handle Errors here.
+  alert(error.code);
+  console.log(error.message);
+  window.localStorage.setItem('error', error);
+  // ...
+});
+
+export const signInWithEmailAndPassword = (email, password) => auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+    alert(error.code);
+    console.log(error.message);
+  });
 
 export const signOut = () => auth.signOut().then(function() {
     // Sign-out successful.

@@ -4,9 +4,20 @@ import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Home from 'components/Home';
 import campusList from './campusList';
+import { createUserWithEmailAndPassword } from 'firebase.utils';
 
 class SignUp extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            email: "",
+            password: "",
+            name: "",
+        };
+    }
     render() {
+        const {email, password} = this.state;
+        const createUser = () => createUserWithEmailAndPassword(email, password);
         return (
             <Fragment>
                 <div className={styles.home}>
@@ -15,15 +26,15 @@ class SignUp extends React.Component {
                 <div className={styles.formContainer}>
                     <Form>
                         <div className={styles.formGroup}>
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control type="email" placeholder="Email" onChange={this._handleChangeEmail}/>
                         </div>
 
                         <div className={styles.formGroup}>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" placeholder="Password" onChange={this._handleChangePassword} />
                         </div>
 
                         <div className={styles.formGroup}>
-                            <Form.Control placeholder="이름" />
+                            <Form.Control placeholder="이름" onChange={this._handleChangeName}/>
                         </div>
 
                         <div className={styles.rowFormGroup}>
@@ -83,13 +94,26 @@ class SignUp extends React.Component {
 
                         </div>
 
-                        <Button variant="primary" size="lg" block type="submit">
+                        <Button variant="primary" size="lg" block type="submit" onClick={createUser}>
                             동의하고 가입하기
                 </Button>
                     </Form>
                 </div>
             </Fragment>
         );
+    }
+
+    _handleChangeEmail = (event) => {
+        this.setState({email: event.target.value})
+    }
+
+
+    _handleChangePassword = (event) => {
+        this.setState({password: event.target.value})
+    }
+
+    _handleChangeName = (event) => {
+        this.setState({name: event.target.value})
     }
 }
 

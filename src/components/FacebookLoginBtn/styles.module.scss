@@ -1,0 +1,14 @@
+.login-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .google-btn, .facebook-btn {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1rem;
+    }
+}
+
+.login-wrapper:hover{
+    font-weight: 800;
+}

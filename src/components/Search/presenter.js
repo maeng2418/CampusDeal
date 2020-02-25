@@ -19,7 +19,7 @@ const Search = (props) => (
             </DropdownButton>
             <FormControl name="query" aria-describedby="basic-addon1" className={styles.inputBar} value={props.value} onChange={props.handleChange} />
             <InputGroup.Append>
-                <Button variant="outline-success" onClick={props.search}>🔍</Button>
+                <Button variant="outline-success" onClick={props.search}><span role="img" aria-label="search">🔍</span></Button>
             </InputGroup.Append>
         </InputGroup>
 

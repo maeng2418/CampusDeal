@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from './presenter';
-import { auth, signOut } from 'firebase.utils';
+import { withFirebase } from '../Firebase';
 
 
 class Container extends React.Component {
@@ -12,7 +12,7 @@ class Container extends React.Component {
     };
 
     componentDidMount() {
-        auth.onAuthStateChanged(user => {
+        this.props.firebase.auth.onAuthStateChanged(user => {
             this.setState({user})
         });
     }
@@ -23,16 +23,9 @@ class Container extends React.Component {
         return(
             <Navigation 
                 user={user}
-                signOut={signOut}
-                logOut={this._handleLogOut} 
             />
         );
     }
-
-    _handleLogOut = () => {
-        const { logOut } = this.props;
-        logOut();
-    }
 }
 
-export default Container;
+export default withFirebase(Container);

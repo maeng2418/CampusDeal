@@ -1,4 +1,4 @@
-const firebaseConfig = {
+const config = {
     apiKey: "AIzaSyDhKUXIo-uvgTt6dUCETa7Qgu4wispqgDE",
     authDomain: "campus-deal-6637b.firebaseapp.com",
     databaseURL: "https://campus-deal-6637b.firebaseio.com",
@@ -9,4 +9,4 @@ const firebaseConfig = {
     measurementId: "G-812Y2TSXWW"
 };
 
-export default firebaseConfig;
+export default config;

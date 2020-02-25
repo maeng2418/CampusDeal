@@ -12,3 +12,14 @@
 .login-wrapper:hover{
     font-weight: 800;
 }
+
+.sign-up-and-forget {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+    text-align: center;
+    a {
+        margin-left: 2rem;
+        font-size: 1.1rem;
+    }
+    a:hover { color: #A566FF;}
+}

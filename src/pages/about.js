@@ -9,7 +9,6 @@ const About = ({location, match}) => {
   const detail = query.detail === 'true';
 
   return [
-    <Navigation/>,
     <div>
       Hello {match.params.name} <br/>
       {detail && 'detail: blahblah'}

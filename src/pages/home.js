@@ -5,7 +5,6 @@ import Group from 'components/Group';
 import Navigation from 'components/Navigation';
 
 const Home = (props) => [
-  <Navigation />,
   <Search/>,
   <Group/>,
   <Footer/>

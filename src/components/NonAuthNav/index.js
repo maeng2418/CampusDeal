@@ -9,6 +9,4 @@ const NonAuthNav = () => (
         <Link to="/signup"><li className={styles.link}>회원가입</li></Link>
     </Fragment>
 );
-
-
 export default NonAuthNav;

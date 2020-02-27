@@ -15,13 +15,7 @@ const Navigation = (props) => (
                 <div className={styles.colRight}>
                     <div className={styles.menuBar}>
                         <ul className={styles.menu}>
-                            {
-                                props.isLoggedIn ?
-                                    <AuthNav />
-                                    :
-                                    <NonAuthNav />
-                            }
-
+                            { props.isLoggedIn ? <AuthNav /> : <NonAuthNav /> }
                             <Link to="/about"><li className={styles.link}>장바구니</li></Link>
                             <li className={styles.link} onClick={props.logOut}>고객센터</li>
                         </ul>

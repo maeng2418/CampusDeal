@@ -1,31 +1,29 @@
 import React from 'react';
 import styles from "./styles.module.scss";
 
-const TestComponent = (props) => (
-    <h2 className={styles.testComponent}>
-        {props.greeting}, this is test page
-    </h2>
-);
-
 class Test extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {greeting:'Hello'};
+        this.state = { customers: '' };
     }
 
-    changing = () => {
-        this.setState({greeting: 'Fuck'});
+    componentDidMount() {
+        fetch('/api/customers')
+            .then(res => res.json())
+            .then(res => this.setState({ customers: res }));
     }
 
-    render(){
-        const {greeting} = this.state; //const greeting = this.state.greeting;
+    render() {
 
-        return(
-            <>
-                <h1>{greeting}, This is test page</h1>
-                <TestComponent greeting='hello'/>
-                <button onClick={this.changing}>눌러주세요</button>
-            </>
+        return (
+            <div>
+                {this.state.customers ? this.state.customers.map(c => {
+                    return <div key={c.id} id={c.id} image={c.image} name={c.name} birthday={c.birthday} gender={c.gender} job={c.job}>
+                        {c.name}
+                        </div>
+                }) : ''}
+            </div>
+
         );
     }
 

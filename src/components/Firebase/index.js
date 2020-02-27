@@ -1,5 +1,6 @@
 import React from 'react';
 import Firebase from './firebase';
+import withAuthorization from './withAuthorization';
 
 const FirebaseContext = React.createContext(null);
 /* createContext()기능은 본질적으로 두 가지 구성 요소를 만듭니다.
@@ -14,4 +15,4 @@ const withFirebase = Component => props => (
 );
 
 export default Firebase;
-export { FirebaseContext, withFirebase };
+export { FirebaseContext, withFirebase, withAuthorization };

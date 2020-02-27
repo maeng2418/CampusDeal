@@ -14,11 +14,12 @@ class LogIn extends React.Component {
             password: "",
             show: false,
             error: null,
+            press: null,
         };
     }
 
     render() {
-        const { email, password, show } = this.state;
+        const { email, password, show, press } = this.state;
         const handleClose = () => this.setState({ ...this.state, show: false });
         const handleShow = () => this.setState({ ...this.state, show: true });
         const onErrorChange = (error) => this.setState({error: error});
@@ -41,12 +42,12 @@ class LogIn extends React.Component {
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
-                                <Form.Control type="password" placeholder="Password" size="lg" onChange={this._handlePasswordChange} />
+                                <Form.Control type="password" placeholder="Password" size="lg" onChange={this._handlePasswordChange} onKeyPress={this._handlePressChange}/>
                                 <Form.Text className="text-muted">
                                     {password==="" ? <small>비밀번호를 입력해주세요.</small> : <small>&nbsp;</small>}
                                 </Form.Text>
                             </Form.Group>
-                            <EmailLoginBtn email={email} password={password} handleClose={handleClose} onErrorChange={onErrorChange}/>
+                            <EmailLoginBtn email={email} password={password} handleClose={handleClose} onErrorChange={onErrorChange} press={press} resetPress={this._resetPress}/>
                             <FacebookLoginBtn handleClose={handleClose} onErrorChange={onErrorChange}/>
                             <GoogleLoginBtn handleClose={handleClose} onErrorChange={onErrorChange}/>
                         </Form>
@@ -66,7 +67,15 @@ class LogIn extends React.Component {
 
     _handlePasswordChange = e => {
         this.setState({ password: e.target.value });
-      };
+    };
+
+    _handlePressChange = e => {
+        e.key === "Enter" && this.setState({ press : e});
+    };
+
+    _resetPress = () => {
+        this.setState({ press : null});
+    }
 }
 
 export default LogIn;

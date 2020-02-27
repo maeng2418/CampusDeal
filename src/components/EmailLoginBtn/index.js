@@ -1,34 +1,14 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import styles from './styles.module.scss';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose' // higher-order 컴포넌트 깔끔하게 만들어줌. (괄호없이 나열)
-import { withFirebase } from '../Firebase';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from 'redux/modules/user';
+import Container from './container';
 
-class EmailLoginBtn extends React.Component {
-    render(){
-        return(
-            <Button className={styles.loginWrapper} variant="outline-success" size="lg" block onClick={this._login}>
-                로그인
-            </Button>
-        );
-    }
+const mapStateToProps = (state) => {
+  return {
+      authUser: state.user.authUser,
+  }
+};
 
-    _login = event => {
-        const { email, password } = this.props;
-        this.props.firebase
-          .doSignInWithEmailAndPassword(email, password)
-          .then(() => {
-            this.props.handleClose();
-            this.props.history.push('/');
-          })
-          .catch(error => {
-            console.log(error);
-            this.props.onErrorChange(error);
-          });
-    
-        event.preventDefault();
-      };
-}
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default compose(withRouter, withFirebase)(EmailLoginBtn);
+export default connect(mapStateToProps, mapDispatchToProps)(Container); //안쓰는거 null 처리

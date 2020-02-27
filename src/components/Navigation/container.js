@@ -4,26 +4,23 @@ import { withFirebase } from '../Firebase';
 
 
 class Container extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            user: null,
-        }
-    };
-
-    componentDidMount() {
-        this.props.firebase.auth.onAuthStateChanged(user => {
-            this.setState({user})
-        });
-    }
+  
+      componentDidMount() {
+        this.listener = this.props.firebase.auth.onAuthStateChanged(
+          authUser => {
+            authUser && this.props.logIn(JSON.parse(JSON.stringify(authUser)));
+          },
+        );
+        this.setState({loaded:true});
+      }
+  
+      componentWillUnmount() {
+        this.listener();
+      }
 
     render(){
-        const { user } = this.state;
-
         return(
-            <Navigation 
-                user={user}
-            />
+          <Navigation isLoggedIn={this.props.isLoggedIn}/>
         );
     }
 }

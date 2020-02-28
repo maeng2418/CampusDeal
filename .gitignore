@@ -25,3 +25,4 @@ yarn-error.log*
 /src/components/Firebase/firebaseConfig.js
 /src/server/node_modules
 /src/server/config/serviceAccountKey.json
+/src/config/firebaseConfig.js

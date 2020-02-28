@@ -1,15 +1,17 @@
-import React from 'react';
-import { withFirebase } from 'components/Firebase';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from 'redux/modules/user';
+import authActionCreators from 'redux/modules/actions/actionCreators/auth';
+import apiStatusActionCreators from 'redux/modules/actions/actionCreators/apiStatus';
+import Container from './container';
 
-const LogOut = ({ firebase, logOut }) => (
-    <span onClick={() => {firebase.doSignOut(); logOut();}}>
-      로그아웃
-    </span>
-);
+const mapStateToProps = (state) => {
+  return {
+      authMsg: state.auth.authMsg,
+      auth: state.firebaseReducer.auth,
+      //loading: state.apiStatusReducer.apiCallsInProgress > 0
+  }
+};
 
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(Object.assign({}, authActionCreators, apiStatusActionCreators), dispatch);
 
-export default withFirebase(connect(null, mapDispatchToProps)(LogOut));
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

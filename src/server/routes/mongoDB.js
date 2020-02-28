@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb+srv://maeng2418:!groovy365@campusdeal-kk1sm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://maeng2418:!groovy365@campusdeal-kk1sm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+
 const Schema = mongoose.Schema;
 
 var Book = new Schema({

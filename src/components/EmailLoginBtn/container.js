@@ -1,34 +1,45 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose' // higher-order 컴포넌트 깔끔하게 만들어줌. (괄호없이 나열)
-import { withFirebase } from 'components/Firebase';
+//import { compose } from 'recompose' // higher-order 컴포넌트 깔끔하게 만들어줌. (괄호없이 나열)
+import firebase from "config/firebase";
 import EmailLoginBtn from './presenter';
 
 class Container extends React.Component {
-    render(){
-        this.props.press && this._login(this.props.press);
-        return(
-            <EmailLoginBtn login={this._login}/>
-        );
-    }
+  render() {
+    this.props.press && this._login(this.props.press);
+    return (
+      <EmailLoginBtn login={this._login} />
+    );
+  }
 
-    _login = event => {
-        const { email, password } = this.props;
-        this.props.firebase
-          .doSignInWithEmailAndPassword(email, password)
-          .then((authUser) => {
+  _login = event => {
+    const { email, password } = this.props;
+    event.preventDefault();
+    this.props.resetPress();
+    try {
+      this.props.beginApiCall();
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(data => {
+          if (data.user.emailVerified) {
+            console.log("IF", data.user.emailVerified);
+            this.props.signin();
             this.props.handleClose();
             this.props.history.push('/');
-          })
-          .catch(error => {
-            console.log(error);
-            this.props.onErrorChange(error);
-            alert(error.message);
-          });
-    
-        event.preventDefault();
-        this.props.resetPress();
-      };
+          } else {
+            console.log("ELSE", data.user.emailVerified);
+            this.props.emailNotVerified("You haven't verified your e-mail address.");
+          }
+        })
+        .catch(() => {
+          this.props.apiCallError();
+          this.props.signinError("Invalid login credentials");
+        });
+    } catch (err) {
+      this.props.apiCallError();
+      this.props.signinError("Invalid login credentials");
+    }
+  };
+
 }
 
-export default compose(withRouter, withFirebase)(Container);
+export default withRouter(Container);

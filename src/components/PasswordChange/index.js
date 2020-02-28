@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import { withFirebase } from 'components/Firebase';
 import { Form, Button } from 'react-bootstrap';
 import styles from './styles.module.scss';
 import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
+import firebase from "config/firebase";
 
 const INITIAL_STATE = {
     passwordOne: '',
@@ -41,8 +40,7 @@ class PasswordChangeForm extends React.Component {
 
     _onSubmit = event => {
         const { passwordOne } = this.state;
-        this.props.firebase
-            .doPasswordUpdate(passwordOne)
+        firebase.auth().currentUser.updatePassword(passwordOne)
             .then(() => {
                 this.setState({ ...INITIAL_STATE });
                 this.props.history.push('/');
@@ -57,4 +55,4 @@ class PasswordChangeForm extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     };
 }
-export default compose(withRouter, withFirebase)(PasswordChangeForm);
+export default withRouter(PasswordChangeForm);

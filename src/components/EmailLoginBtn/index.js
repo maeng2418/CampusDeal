@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from 'redux/modules/user';
+import authActionCreators from 'redux/modules/actions/actionCreators/auth';
+import apiStatusActionCreators from 'redux/modules/actions/actionCreators/apiStatus';
 import Container from './container';
 
 const mapStateToProps = (state) => {
   return {
-      authUser: state.user.authUser,
+      authMsg: state.auth.authMsg,
+      auth: state.firebaseReducer.auth,
+      //loading: state.apiStatusReducer.apiCallsInProgress > 0
   }
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(Object.assign({}, authActionCreators, apiStatusActionCreators), dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Container); //안쓰는거 null 처리

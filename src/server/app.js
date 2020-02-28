@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var firebaseRouter = require('./routes/firebase');
+var mongoDBRouter = require('./routes/mongoDB');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/fierbase', firebaseRouter);
+app.use('/mongodb', mongoDBRouter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));

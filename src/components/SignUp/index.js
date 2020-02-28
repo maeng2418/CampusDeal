@@ -123,6 +123,7 @@ class SignUpBase extends React.Component {
 
     _onChange = event => {
         this.setState({ [event.target.name]: event.target.value });
+        console.log(this.state.email)
     };
 
     _onSubmit = event => {

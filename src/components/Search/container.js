@@ -6,18 +6,23 @@ class Container extends React.Component {
         super(props);
         this.state = {
             keywords : "",
+            category : "통합검색"
         };
     }
 
     render(){
-        const { keywords } = this.state;
+        const { keywords, category } = this.state;
         return(
-            <Search value={keywords} handleChange={this._handleChange} search={this._handleSearch}/>
+            <Search value={keywords} handleChange={this._handleChange} category={category} handleCategory={this._handleCategory} search={this._handleSearch}/>
         );
     }
 
+    _handleCategory = (event) => {
+        this.setState({category: event});
+    }
+
     _handleChange = (event) => {
-        this.setState({ keywords: event.target.value })
+        this.setState({ keywords: event.target.value });
     }
 
     _handleSearch = () => {
@@ -26,6 +31,7 @@ class Container extends React.Component {
         searching(keywords);
         alert(keywords);
         this.setState({
+            ...this.state,
             keywords:"",
         });
     }

@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   return {
       authMsg: state.auth.authMsg,
       auth: state.firebaseReducer.auth,
-      //loading: state.apiStatusReducer.apiCallsInProgress > 0
+      loading: state.apiCallStatusReducer.apiCallsInProgress > 0
   }
 };
 

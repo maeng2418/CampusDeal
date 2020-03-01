@@ -56,7 +56,7 @@ const SignUp = (props) => (
                             inline
                             name="privacy"
                             checked={props.privacy}
-                            onClick={props.check}
+                            onClick={props.handlePrivacy}
                         />
                         <Link className={styles.link} to="/">내용보기</Link>
                     </div>
@@ -69,7 +69,7 @@ const SignUp = (props) => (
                             inline
                             name="service"
                             checked={props.service}
-                            onClick={props.check}
+                            onClick={props.handleService}
                         />
                         <Link className={styles.link} to="/">내용보기</Link>
                     </div>
@@ -82,7 +82,7 @@ const SignUp = (props) => (
                             inline
                             name="marketing"
                             checked={props.marketing}
-                            onClick={props.check}
+                            onClick={props.handleMarketing}
                         />
                         <Link className={styles.link} to="/">내용보기</Link>
                     </div>

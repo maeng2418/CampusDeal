@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from './presenter';
-import { withFirebase } from '../Firebase';
 
 
 class Container extends React.Component {
@@ -12,4 +11,4 @@ class Container extends React.Component {
   }
 }
 
-export default withFirebase(Container);
+export default Container;

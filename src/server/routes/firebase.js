@@ -9,6 +9,7 @@ admin.initializeApp({
 });   
 
 router.post('/api/login', (req, res, next) => {
+    console.log(req.body.email)
     admin.auth().getUserByEmail(req.body.email).then(function(userRecord) {
     // See the UserRecord reference doc for the contents of userRecord.
     console.log('Successfully fetched user data:', userRecord.toJSON());

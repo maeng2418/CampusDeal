@@ -1,9 +1,4 @@
-const SEARCH = 'SEARCH';
-
-export const searching = (keywords) => ({
-    type: SEARCH,
-    keywords
-});
+import { SEARCH } from "../actions/actionTypes/search" ;
 
 // 초기 state 값 설정.
 const initialState = {
@@ -26,11 +21,5 @@ const reducer = (state = initialState, action) => {
             return state;
     }
 }
-
-const actionCreators = {
-    searching,
-};
-
-export { actionCreators };
 
 export default reducer;

@@ -3,7 +3,7 @@ import Test from 'components/Test';
 
 
 const Testpage = (props) => [
-    <Test/>
+    <Test/>,
 ];
 
 export default Testpage;

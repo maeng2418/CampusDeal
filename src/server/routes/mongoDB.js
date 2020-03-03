@@ -12,7 +12,7 @@ var Book = new Schema({
     // field: String,
 	publisher: String,
 	condition: String,
-	price: Number,
+	price: String,
 	image: String,
 	date: Date
 });

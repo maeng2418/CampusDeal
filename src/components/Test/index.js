@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./styles.module.scss";
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Test extends React.Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class Test extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/api/login', {
+        axios.post('firebase/api/login', {
             email: this.state.email,
         })
             .then(response => { console.log(response) })
@@ -64,4 +65,4 @@ class Test extends React.Component {
     };
 }
 
-export default Test;
+export default withRouter(Test);

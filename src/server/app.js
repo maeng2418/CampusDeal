@@ -23,8 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/firebase', firebaseRouter);
 app.use('/users', usersRouter);
-app.use('/fierbase', firebaseRouter);
 app.use('/mongodb', mongoDBRouter);
 
 app.use(bodyParser.json());

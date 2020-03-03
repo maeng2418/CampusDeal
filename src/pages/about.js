@@ -10,6 +10,7 @@ const About = ({location, match}) => {
   return [
     <div>
       Hello {match.params.name} <br/>
+      {query.temp}
       {detail && 'detail: blahblah'}
     </div>,
     <Footer/>

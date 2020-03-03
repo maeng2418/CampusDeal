@@ -1,9 +1,8 @@
 import React from 'react';
 import PasswordForget from 'components/PasswordForget';
 
-
-const pwForget = (props) => [
+const PwForget = () => [
     <PasswordForget/>
 ];
 
-export default pwForget;
+export default PwForget;

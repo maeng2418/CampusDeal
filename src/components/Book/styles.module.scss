@@ -1,0 +1,66 @@
+.book-container {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px #999 solid;
+    margin-bottom: 1.5rem;
+    .title-container{
+        display: flex;
+        flex-direction: row;
+        .book-title{
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .register-date{
+            margin-left: auto;
+        }
+    }
+    .content-container{
+        display: flex;
+        flex-direction: row;
+        .img-container{
+            width: 15rem;
+            display: flex;
+            .book-img{
+                margin: auto;
+            }
+        }
+        .book-desc-container{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 1.5rem;
+            margin-right: auto;
+            
+            .book-desc{
+                margin-bottom: 1.5rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+                .desc-title{
+                    margin-right: 2rem;
+                }
+            }
+
+            .desc-main{
+                display: flex;
+                flex-direction: row;
+                .desc-titles{
+                    margin-right: 2rem;
+                }
+            }
+        }
+        .button-container{
+            margin: auto 0;
+            .price {
+                margin-bottom: 2rem;
+                text-align: center;
+                font-size: 2rem;
+                font-weight: bold;
+            }
+            button {
+                width:13rem;
+            }
+            button:nth-child(3){
+                margin-top: 1rem;
+            }
+        }
+    }
+}

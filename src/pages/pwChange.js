@@ -2,8 +2,8 @@ import React from 'react';
 import PasswordChange from 'components/PasswordChange';
 import requireAuth from 'config/requireAuth';
 
-const pwChange = () => [
+const PwChange = () => [
     <PasswordChange/>
 ];
 
-export default requireAuth(pwChange);
+export default requireAuth(PwChange);

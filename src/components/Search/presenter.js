@@ -6,7 +6,7 @@ const categoryList = ["통합검색", "법학", "경영/경제", "인문", "어�
 
 const Search = (props) => (
     
-    <Form className={styles.searchBar} onSubmit={props.search}>
+    <Form className={styles.searchBar} action="/book">
         <InputGroup className={styles.inputGroup}>
             <DropdownButton
                 as={InputGroup.Prepend}
@@ -14,12 +14,14 @@ const Search = (props) => (
                 title={props.category}
                 id="input-group-dropdown-1"
                 className={styles.dropDownButton}
+                name="category"
             >
                 {categoryList.map(category =>
                     <Dropdown.Item eventKey={category} onSelect={props.handleCategory}>{category}</Dropdown.Item>
                 )}
             </DropdownButton>
-            <FormControl name="query" aria-describedby="basic-addon1" className={styles.inputBar} value={props.value} onChange={props.handleChange} />
+            <input type="hidden" name="category" value={props.category}/>
+            <FormControl name="keyword" aria-describedby="basic-addon1" className={styles.inputBar} value={props.value} onChange={props.handleChange} />
             <InputGroup.Append>
                 <Button variant="outline-success" type="submit"><span role="img" aria-label="search">🔍</span></Button>
             </InputGroup.Append>

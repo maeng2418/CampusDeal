@@ -25,7 +25,7 @@ class BookList extends React.Component {
         const query = queryString.parse(this.props.location.search);
         return (
             <div className={styles.bookListContainer}>
-                {/* <div>{query.category}<br/>{query.keyword}</div> */}
+                <div>{query.category}{query.keyword}</div>
                 {this.state.books ? this.state.books.map(book =>
                     (<Book date={book.date} name={book.book} img={book.img} publisher={book.publisher} condition={book.condition} author={book.author} price={book.price}/>)
                 ) : ''}

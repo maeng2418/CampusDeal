@@ -8,21 +8,15 @@ class Container extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            keywords: "",
-            category: "통합검색",
+            keyword: queryString.parse(this.props.location.search).keyword === undefined ? "" : queryString.parse(this.props.location.search).keyword,
+            category: queryString.parse(this.props.location.search).category === undefined ? "통합검색" : queryString.parse(this.props.location.search).category,
         };
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.keywords !== this.state.keywords) {
-          console.log('Search bar를 새로 만든다.');
-        }
-    }
-
     render() {
-        const { keywords, category } = this.state;
+        const { keyword, category } = this.state;
         return (
-            <Search value={keywords} handleChange={this._handleChange} category={category} handleCategory={this._handleCategory} search={this._handleSearch} />
+            <Search value={keyword} handleChange={this._handleChange} category={category} handleCategory={this._handleCategory} />
         );
     }
 
@@ -31,19 +25,7 @@ class Container extends React.Component {
     }
 
     _handleChange = (event) => {
-        this.setState({ keywords: event.target.value });
-    }
-
-    _handleSearch = (event) => {
-        const { keywords, category, isSearched } = this.state;
-        event.preventDefault();
-        axios.post('/api/login', {
-            email: this.state.email,
-        })
-            .then(response => { console.log(response) })
-            .then(this.props.history.push({ pathname: '/book', search: 'category=' + category + '&keyword=' + keywords }))
-            .then(this.setState({keywords:"", category: "통합검색"}))
-            .catch(response => console.log(response));
+        this.setState({ keyword: event.target.value });
     }
 }
 

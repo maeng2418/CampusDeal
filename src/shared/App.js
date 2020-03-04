@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navigation from 'components/Navigation';
-import { Home, About, TestPage, Sign, PwForget, PwChange, Book } from 'pages';
+import { Home, About, TestPage, Sign, PwForget, Book, Register, MyPage } from 'pages';
 
 class App extends Component {
     render() {
@@ -18,8 +18,9 @@ class App extends Component {
                     <Route exact path="/about" component={About} />
                 </Switch>
                 <Route path="/book" component={Book} />
+                <Route path="/mypage" component={MyPage}/>
+                <Route path="/register" component={Register} />
                 <Route path="/test" component={TestPage} />
-                <Route path='/pw-change' component={PwChange} />
             </Fragment>
         );
     }

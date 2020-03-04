@@ -1,0 +1,109 @@
+.register-container{
+    display: flex;
+    flex-direction: column;
+    width: 90rem;
+    margin: 3.5rem auto;
+    .register-title{
+        font-size: 2rem;
+        font-weight: 900;
+        border-bottom: 1px #999 solid;
+        padding-bottom: 1rem;
+    }
+    .register-form{
+        width: 80rem;
+        margin: 1.5rem auto;
+        display: flex;
+        flex-direction: row;
+        .left-container{
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            .input-text{
+                padding : 2rem 1rem;
+                margin: .7rem;
+                width: 35rem;
+            }
+            .btn-toolbar{
+                width: 35rem;
+                border: 1px solid #ced4da;
+                padding : 1rem 1rem;
+                margin: .7rem;
+                border-radius: .3rem;
+                display: flex;
+                justify-content: space-between;
+                .method-btn{
+                    font-size: 1.25rem;
+                    width: 10rem;
+                }
+            }
+            .checkGroup{
+                display: flex;
+                flex-direction: row;
+                width: 35rem;
+                margin-top: 5rem;
+                font-size: 1.25rem;
+                label{
+                    line-height: 1.25;
+                    margin-left: 1rem;
+                }
+                .link {
+                    margin-left: auto;
+                    line-height: 1.25;
+                    color: rgb(41, 90, 221);
+                }
+            }
+        }
+        .right-container{
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            .img-container{
+                width: 20rem;
+                height: 25rem;
+                background-color: #cccccc;
+                margin: 0 auto;
+                img{
+                    width: 20rem;
+                    height: 25rem;
+                }
+            }
+
+            .custom-file-upload{
+                width: 20rem;
+                margin: 2rem auto;
+                color: #17a2b8;
+                font-weight: 800;
+                text-align: center;
+                vertical-align: middle;
+                display: inline-block;
+                user-select: none;
+                background-color: transparent;
+                border: 1px solid #17a2b8;
+                padding: .375rem .75rem;
+                font-size: 1.25rem;
+                line-height: 1.5;
+                border-radius: .25rem;
+                padding: 6px 12px;
+                cursor: pointer;
+            }
+            .custom-file-upload:hover{
+                color: #fff;
+                background-color: #17a2b8;
+                border-color: #17a2b8;
+                text-decoration: none;
+            }
+        
+            input[type="file"] {
+                display: none;
+            }
+
+            button[type=submit]{
+                margin-top: auto;
+                width: 30rem;
+                font-size: 1.5rem;
+                padding : 1rem 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+}

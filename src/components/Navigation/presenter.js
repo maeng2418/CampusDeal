@@ -16,7 +16,7 @@ const Navigation = (props) => (
                     <div className={styles.menuBar}>
                         <ul className={styles.menu}>
                             { !props.auth.isLoaded ? null : !props.auth.isEmpty ? <AuthNav /> : <NonAuthNav /> }
-                            <Link to="/book"><li className={styles.link}>장바구니</li></Link>
+                            <Link to="/register"><li className={styles.link}>판매등록</li></Link>
                             <li className={styles.link} onClick={props.logOut}>고객센터</li>
                         </ul>
                     </div>

@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 const AuthNav = () => (
     <Fragment>
         <li className={styles.link}><LogOut /></li>
-        <Link to="/pw-change"><li className={styles.link}>마이페이지</li></Link>
+        <Link to="/mypage"><li className={styles.link}>마이페이지</li></Link>
     </Fragment>
 );
 

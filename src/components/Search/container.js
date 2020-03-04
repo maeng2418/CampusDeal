@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from './presenter';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 import queryString from 'query-string';
 
 class Container extends React.Component {

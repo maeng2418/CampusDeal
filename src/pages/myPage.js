@@ -1,9 +1,9 @@
 import React from 'react';
-import PasswordChange from 'components/PasswordChange';
+import TabView from 'components/TabView';
 import requireAuth from 'config/requireAuth';
 
 const PwChange = () => [
-    <PasswordChange/>
+    <TabView/>
 ];
 
 export default requireAuth(PwChange);

@@ -1,6 +1,3 @@
-a { text-decoration:none ; color:#000000}
-a:hover { color: #A566FF;}
-
 .navigation {
     .nav-wrapper {
         .row {
@@ -14,6 +11,8 @@ a:hover { color: #A566FF;}
             .col-right {
                 .menuBar {
                     .menu {
+                        a { text-decoration:none ; color:#000000}
+                        a:hover { color: #A566FF;}
                         .link {
                             display: inline-block;
                             margin: 2vw;

@@ -29,13 +29,15 @@ class Container extends React.Component {
             this.props.emailNotVerified("You haven't verified your e-mail address.");
           }
         })
-        .catch(() => {
+        .catch((err) => {
           this.props.apiCallError();
           this.props.signinError("Invalid login credentials");
+          alert(err);
         });
     } catch (err) {
       this.props.apiCallError();
       this.props.signinError("Invalid login credentials");
+      alert(err);
     }
   };
 

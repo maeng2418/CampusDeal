@@ -32,6 +32,7 @@ class Test extends React.Component {
         event.preventDefault();
         axios.post('firebase/api/login', {
             email: this.state.email,
+            book: this.state.books[0],
         })
             .then(response => { console.log(response) })
             .catch(response => { console.log(response) });

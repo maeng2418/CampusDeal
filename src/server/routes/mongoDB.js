@@ -1,23 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const multer = require("multer");
+const upload = multer({ dest: 'uploads/', limits: { fileSize: 5 * 1024 * 1024 } });
 
 mongoose.connect('mongodb+srv://maeng2418:!groovy365@campusdeal-kk1sm.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 const Schema = mongoose.Schema;
 
 var Book = new Schema({
-	author: String,
-    book: String,
-    // field: String,
-	publisher: String,
-	condition: String,
-	price: String,
-	image: String,
+	uid: String,
+	bookName: String,
+    author: String,
+    publisher: String,
+	publishDate: String,
+	category: String,
+	price: Number,
+	method: Array,
+	// image: {data:Butter, contentsType: String},
 	date: Date
 });
 
-var bookModel = mongoose.model('Post', Book);
+var bookModel = mongoose.model('Book', Book);
 
 router.get('/books', function(req, res, next) {
     bookModel.find({}, function(err,data){
@@ -25,31 +29,37 @@ router.get('/books', function(req, res, next) {
     });
 });
 
-router.post('/register', function(req, res, next) {
+router.post('/api/register', upload.single('image'), function(req, res, next) {
+	var uid = req.body.uid;
+	var bookName = req.body.bookName;
 	var	author = req.body.author;
-	var book = req.body.book_title;
 	var publisher = req.body.publisher;
-	var condition = req.body.condition;
+	var publishDate = req.body.publishDate;
+	var category = req.body.category;
 	var price = req.body.price;
-	var image = req.body.img_data;
+	var method = req.body.method;
+	var image = req.file;
 	var date = Date.now();
+
+	var book = new bookModel();
 	
-	var post = new postModel();
+	book.uid = uid;
+	book.bookName = bookName;
+	book.author = author;
+	book.publisher = publisher;
+	book.publishDate = publishDate;
+	book.category = category;
+	book.price = price;
+	book.method = method;
+	book.image = image;
+	book.date = date;
 	
-	post.author = author;
-	post.book = book;
-	post.publisher = publisher;
-	post.condition = condition;
-	post.price = price;
-	post.image = image;
-	post.date = date;
-	
-	post.save(function (err) {
+	book.save(function (err) {
 		if (err) {
 			throw err;
 		}
 		else {
-			res.redirect('/complete');
+			console.log("complete");
 		}
 	});
 });
